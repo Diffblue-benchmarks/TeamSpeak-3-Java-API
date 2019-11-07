@@ -1,0 +1,132 @@
+package com.github.theholywaffle.teamspeak3.api.wrapper;
+
+import com.github.theholywaffle.teamspeak3.api.PermissionGroupDatabaseType;
+import com.github.theholywaffle.teamspeak3.api.wrapper.Client;
+import com.github.theholywaffle.teamspeak3.api.wrapper.ServerGroup;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.Assert;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.Timeout;
+
+public class Client_isInServerGroupTest_5_Test {
+  @Test
+  public void isInServerGroupTest() throws Exception {
+    // Arrange
+    HashMap<String, String> hashMap = new HashMap<String, String>();
+    String string = "aaaaa";
+    hashMap.put(string, "aaaaa");
+    Client client = new Client(hashMap);
+    HashMap<String, String> hashMap1 = new HashMap<String, String>();
+    hashMap1.put("aaaak", string);
+    ServerGroup serverGroup = new ServerGroup(hashMap1);
+
+    // Act and Assert
+    thrown.expect(NumberFormatException.class);
+    client.isInServerGroup(serverGroup);
+    int id = serverGroup.getId();
+    int memberAddPower = serverGroup.getMemberAddPower();
+    String name = serverGroup.getName();
+    String toStringResult = serverGroup.toString();
+    int memberRemovePower = serverGroup.getMemberRemovePower();
+    Map<String, String> map = serverGroup.getMap();
+    int saveDb = serverGroup.getSaveDb();
+    int modifyPower = serverGroup.getModifyPower();
+    PermissionGroupDatabaseType type = serverGroup.getType();
+    int sortId = serverGroup.getSortId();
+    long iconId = serverGroup.getIconId();
+    Assert.assertEquals(-1, id);
+    Assert.assertEquals(-1, serverGroup.getNameMode());
+    Assert.assertEquals(-1L, iconId);
+    Assert.assertEquals(-1, sortId);
+    Assert.assertEquals(null, type);
+    Assert.assertEquals(-1, modifyPower);
+    Assert.assertEquals(-1, saveDb);
+    Assert.assertSame(hashMap1, map);
+    Assert.assertTrue(map instanceof HashMap);
+    Assert.assertEquals(-1, memberRemovePower);
+    Assert.assertSame(hashMap1, map);
+    Assert.assertEquals("{aaaak=aaaaa}", toStringResult);
+    Assert.assertEquals("", name);
+    Assert.assertEquals(-1, memberAddPower);
+    int type1 = client.getType();
+    int talkPower = client.getTalkPower();
+    String clientURI = client.getClientURI();
+    boolean isInputMutedResult = client.isInputMuted();
+    Date lastConnectedDate = client.getLastConnectedDate();
+    boolean isRegularClientResult = client.isRegularClient();
+    int channelId = client.getChannelId();
+    String country = client.getCountry();
+    long idleTime = client.getIdleTime();
+    boolean isTalkingResult = client.isTalking();
+    Map<String, String> map1 = client.getMap();
+    String ip = client.getIp();
+    boolean isServerQueryClientResult = client.isServerQueryClient();
+    String uniqueIdentifier = client.getUniqueIdentifier();
+    boolean isChannelCommanderResult = client.isChannelCommander();
+    String[] badgeGUIDs = client.getBadgeGUIDs();
+    boolean isInputHardwareResult = client.isInputHardware();
+    String toStringResult1 = client.toString();
+    boolean isOutputHardwareResult = client.isOutputHardware();
+    int channelGroupId = client.getChannelGroupId();
+    int inheritedChannelGroupId = client.getInheritedChannelGroupId();
+    String platform = client.getPlatform();
+    int id1 = client.getId();
+    boolean isRecordingResult = client.isRecording();
+    String nickname = client.getNickname();
+    boolean isPrioritySpeakerResult = client.isPrioritySpeaker();
+    String awayMessage = client.getAwayMessage();
+    boolean isAwayResult = client.isAway();
+    boolean isOutputMutedResult = client.isOutputMuted();
+    long iconId1 = client.getIconId();
+    int databaseId = client.getDatabaseId();
+    Assert.assertEquals(-1, type1);
+    Assert.assertEquals("", client.getVersion());
+    Assert.assertEquals(-1, databaseId);
+    Assert.assertEquals(-1L, iconId1);
+    Assert.assertFalse(isOutputMutedResult);
+    Assert.assertFalse(isAwayResult);
+    Assert.assertEquals("", awayMessage);
+    Assert.assertFalse(isPrioritySpeakerResult);
+    Assert.assertEquals("", nickname);
+    Assert.assertFalse(isRecordingResult);
+    Assert.assertEquals(-1, id1);
+    Assert.assertEquals("", platform);
+    Assert.assertEquals(-1, inheritedChannelGroupId);
+    Assert.assertEquals(-1, channelGroupId);
+    Assert.assertFalse(isOutputHardwareResult);
+    Assert.assertEquals("{aaaaa=aaaaa}", toStringResult1);
+    Assert.assertFalse(isInputHardwareResult);
+    Assert.assertEquals(0, badgeGUIDs.length);
+    Assert.assertArrayEquals(new String[]{}, badgeGUIDs);
+    Assert.assertFalse(isChannelCommanderResult);
+    Assert.assertEquals("", uniqueIdentifier);
+    Assert.assertFalse(isServerQueryClientResult);
+    Assert.assertEquals("", ip);
+    Assert.assertSame(hashMap, map1);
+    Assert.assertTrue(map1 instanceof HashMap);
+    Assert.assertFalse(isTalkingResult);
+    Assert.assertSame(hashMap, map1);
+    Assert.assertEquals(-1L, idleTime);
+    Assert.assertEquals("", country);
+    Assert.assertEquals(-1, channelId);
+    Assert.assertFalse(isRegularClientResult);
+    int year = lastConnectedDate.getYear();
+    int timezoneOffset = lastConnectedDate.getTimezoneOffset();
+    int hours = lastConnectedDate.getHours();
+    Assert.assertEquals(-1, talkPower);
+    Assert.assertFalse(isInputMutedResult);
+    Assert.assertEquals("client://-1/~", clientURI);
+    Assert.assertEquals(69, year);
+    Assert.assertEquals("Wed Dec 31 23:59:59 UTC 1969", lastConnectedDate.toString());
+    Assert.assertEquals(0, timezoneOffset);
+    Assert.assertEquals(23, hours);
+  }
+  @Rule
+  public Timeout timeout = new Timeout(10000);
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+}
