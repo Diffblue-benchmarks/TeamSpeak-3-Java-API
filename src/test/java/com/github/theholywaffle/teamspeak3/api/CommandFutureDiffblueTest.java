@@ -20,7 +20,7 @@ public class CommandFutureDiffblueTest {
     CommandFuture<Object> commandFuture = new CommandFuture<Object>();
 
     // Act and Assert
-    assertTrue(commandFuture.set("aaaaa"));
+    assertTrue(commandFuture.set("value"));
     boolean actualIsDoneResult = commandFuture.isDone();
     assertTrue(actualIsDoneResult);
     assertTrue(commandFuture.getUninterruptibly() instanceof String);
@@ -60,13 +60,13 @@ public class CommandFutureDiffblueTest {
   public void getTest() throws InterruptedException, TimeoutException {
     // Arrange, Act and Assert
     thrown.expect(TimeoutException.class);
-    (new CommandFuture<Object>()).get(1L, TimeUnit.NANOSECONDS);
+    (new CommandFuture<Object>()).get(10L, TimeUnit.NANOSECONDS);
   }
 
   @Test
   public void immediateTest() {
     // Arrange and Act
-    CommandFuture<Object> actualImmediateResult = CommandFuture.<Object>immediate("aaaaa");
+    CommandFuture<Object> actualImmediateResult = CommandFuture.<Object>immediate("value");
 
     // Assert
     boolean actualIsDoneResult = actualImmediateResult.isDone();
@@ -78,7 +78,7 @@ public class CommandFutureDiffblueTest {
   public void awaitTest() throws InterruptedException, TimeoutException {
     // Arrange, Act and Assert
     thrown.expect(TimeoutException.class);
-    (new CommandFuture<Object>()).await(1L, TimeUnit.NANOSECONDS);
+    (new CommandFuture<Object>()).await(10L, TimeUnit.NANOSECONDS);
   }
 
   @Test
@@ -95,7 +95,7 @@ public class CommandFutureDiffblueTest {
   public void awaitUninterruptiblyTest() throws TimeoutException {
     // Arrange, Act and Assert
     thrown.expect(TimeoutException.class);
-    (new CommandFuture<Object>()).awaitUninterruptibly(1L, TimeUnit.NANOSECONDS);
+    (new CommandFuture<Object>()).awaitUninterruptibly(10L, TimeUnit.NANOSECONDS);
   }
 
   @Test
@@ -108,7 +108,13 @@ public class CommandFutureDiffblueTest {
   public void getUninterruptiblyTest() throws TimeoutException {
     // Arrange, Act and Assert
     thrown.expect(TimeoutException.class);
-    (new CommandFuture<Object>()).getUninterruptibly(1L, TimeUnit.NANOSECONDS);
+    (new CommandFuture<Object>()).getUninterruptibly(10L, TimeUnit.NANOSECONDS);
+  }
+
+  @Test
+  public void isCancelledTest() {
+    // Arrange, Act and Assert
+    assertFalse((new CommandFuture<Object>()).isCancelled());
   }
 
   @Test

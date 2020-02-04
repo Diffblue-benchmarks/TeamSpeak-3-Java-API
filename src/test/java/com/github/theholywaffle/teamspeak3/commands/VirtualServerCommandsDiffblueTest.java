@@ -21,13 +21,13 @@ public class VirtualServerCommandsDiffblueTest {
   @Test
   public void serverCreateTest() {
     // Arrange and Act
-    Command actualServerCreateResult = VirtualServerCommands.serverCreate("all", null);
+    Command actualServerCreateResult = VirtualServerCommands.serverCreate("name", null);
 
     // Assert
     String actualName = actualServerCreateResult.getName();
     String actualToStringResult = actualServerCreateResult.toString();
     assertEquals("servercreate", actualName);
-    assertEquals("servercreate virtualserver_name=all", actualToStringResult);
+    assertEquals("servercreate virtualserver_name=name", actualToStringResult);
     assertFalse(actualServerCreateResult.getFuture().isCancelled());
   }
 
@@ -112,13 +112,13 @@ public class VirtualServerCommandsDiffblueTest {
   @Test
   public void serverStopTest() {
     // Arrange and Act
-    Command actualServerStopResult = VirtualServerCommands.serverStop(1, "all");
+    Command actualServerStopResult = VirtualServerCommands.serverStop(1, "because");
 
     // Assert
     String actualName = actualServerStopResult.getName();
     String actualToStringResult = actualServerStopResult.toString();
     assertEquals("serverstop", actualName);
-    assertEquals("serverstop sid=1 reasonmsg=all", actualToStringResult);
+    assertEquals("serverstop sid=1 reasonmsg=because", actualToStringResult);
     assertFalse(actualServerStopResult.getFuture().isCancelled());
   }
 
@@ -138,13 +138,13 @@ public class VirtualServerCommandsDiffblueTest {
   @Test
   public void serverIdGetByPortTest() {
     // Arrange and Act
-    Command actualServerIdGetByPortResult = VirtualServerCommands.serverIdGetByPort(1);
+    Command actualServerIdGetByPortResult = VirtualServerCommands.serverIdGetByPort(8080);
 
     // Assert
     String actualName = actualServerIdGetByPortResult.getName();
     String actualToStringResult = actualServerIdGetByPortResult.toString();
     assertEquals("serveridgetbyport", actualName);
-    assertEquals("serveridgetbyport virtualserver_port=1", actualToStringResult);
+    assertEquals("serveridgetbyport virtualserver_port=8080", actualToStringResult);
     assertFalse(actualServerIdGetByPortResult.getFuture().isCancelled());
   }
 }

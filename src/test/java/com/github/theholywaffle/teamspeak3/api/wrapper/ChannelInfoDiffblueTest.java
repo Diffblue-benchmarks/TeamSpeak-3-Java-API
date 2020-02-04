@@ -9,18 +9,18 @@ public class ChannelInfoDiffblueTest {
   @Test
   public void getIdTest() {
     // Arrange, Act and Assert
-    assertEquals(1, (new ChannelInfo(1, null)).getId());
+    assertEquals(123, (new ChannelInfo(123, null)).getId());
   }
 
   @Test
   public void constructorTest() {
     // Arrange and Act
-    ChannelInfo actualChannelInfo = new ChannelInfo(1, null);
+    ChannelInfo actualChannelInfo = new ChannelInfo(123, null);
 
     // Assert
     Map<String, String> actualMap = actualChannelInfo.getMap();
     assertNull(actualMap);
-    assertEquals(1, actualChannelInfo.getId());
+    assertEquals(123, actualChannelInfo.getId());
   }
 }
 

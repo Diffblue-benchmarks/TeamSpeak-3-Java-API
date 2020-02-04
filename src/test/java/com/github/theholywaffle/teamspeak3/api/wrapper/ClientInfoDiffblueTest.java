@@ -14,25 +14,25 @@ public class ClientInfoDiffblueTest {
   @Test
   public void getIdTest() {
     // Arrange, Act and Assert
-    assertEquals(1, (new ClientInfo(1, null)).getId());
+    assertEquals(123, (new ClientInfo(123, null)).getId());
   }
 
   @Test
   public void isTalkingTest() {
     // Arrange, Act and Assert
     thrown.expect(UnsupportedOperationException.class);
-    (new ClientInfo(1, null)).isTalking();
+    (new ClientInfo(123, null)).isTalking();
   }
 
   @Test
   public void constructorTest() {
     // Arrange and Act
-    ClientInfo actualClientInfo = new ClientInfo(1, null);
+    ClientInfo actualClientInfo = new ClientInfo(123, null);
 
     // Assert
     Map<String, String> actualMap = actualClientInfo.getMap();
     assertNull(actualMap);
-    assertEquals(1, actualClientInfo.getId());
+    assertEquals(123, actualClientInfo.getId());
   }
 }
 

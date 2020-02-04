@@ -7,7 +7,7 @@ public class KeyValueParamDiffblueTest {
   @Test
   public void constructorTest4() {
     // Arrange, Act and Assert
-    assertEquals("=1", (new KeyValueParam("", 1)).toString());
+    assertEquals("=42", (new KeyValueParam("", 42)).toString());
   }
 
   @Test
@@ -19,13 +19,13 @@ public class KeyValueParamDiffblueTest {
   @Test
   public void constructorTest2() {
     // Arrange, Act and Assert
-    assertEquals("=1", (new KeyValueParam("", 1L)).toString());
+    assertEquals("=42", (new KeyValueParam("", 42L)).toString());
   }
 
   @Test
   public void constructorTest() {
     // Arrange, Act and Assert
-    assertEquals("=", (new KeyValueParam("", "")).toString());
+    assertEquals("=value", (new KeyValueParam("", "value")).toString());
   }
 }
 

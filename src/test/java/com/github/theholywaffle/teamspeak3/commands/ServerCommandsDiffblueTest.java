@@ -8,13 +8,13 @@ public class ServerCommandsDiffblueTest {
   @Test
   public void serverProcessStopTest() {
     // Arrange and Act
-    Command actualServerProcessStopResult = ServerCommands.serverProcessStop(")");
+    Command actualServerProcessStopResult = ServerCommands.serverProcessStop("because");
 
     // Assert
     String actualName = actualServerProcessStopResult.getName();
     String actualToStringResult = actualServerProcessStopResult.toString();
     assertEquals("serverprocessstop", actualName);
-    assertEquals("serverprocessstop reasonmsg=)", actualToStringResult);
+    assertEquals("serverprocessstop reasonmsg=because", actualToStringResult);
     assertFalse(actualServerProcessStopResult.getFuture().isCancelled());
   }
 
@@ -60,13 +60,13 @@ public class ServerCommandsDiffblueTest {
   @Test
   public void gmTest() {
     // Arrange and Act
-    Command actualGmResult = ServerCommands.gm(")");
+    Command actualGmResult = ServerCommands.gm("message");
 
     // Assert
     String actualName = actualGmResult.getName();
     String actualToStringResult = actualGmResult.toString();
     assertEquals("gm", actualName);
-    assertEquals("gm msg=)", actualToStringResult);
+    assertEquals("gm msg=message", actualToStringResult);
     assertFalse(actualGmResult.getFuture().isCancelled());
   }
 
@@ -86,14 +86,27 @@ public class ServerCommandsDiffblueTest {
   @Test
   public void logViewTest() {
     // Arrange and Act
-    Command actualLogViewResult = ServerCommands.logView(1, true);
+    Command actualLogViewResult = ServerCommands.logView(2, true);
 
     // Assert
     String actualName = actualLogViewResult.getName();
     String actualToStringResult = actualLogViewResult.toString();
     assertEquals("logview", actualName);
-    assertEquals("logview lines=1 instance=1", actualToStringResult);
+    assertEquals("logview lines=2 instance=1", actualToStringResult);
     assertFalse(actualLogViewResult.getFuture().isCancelled());
+  }
+
+  @Test
+  public void hostInfoTest() {
+    // Arrange and Act
+    Command actualHostInfoResult = ServerCommands.hostInfo();
+
+    // Assert
+    String actualName = actualHostInfoResult.getName();
+    String actualToStringResult = actualHostInfoResult.toString();
+    assertEquals("hostinfo", actualName);
+    assertEquals("hostinfo", actualToStringResult);
+    assertFalse(actualHostInfoResult.getFuture().isCancelled());
   }
 }
 

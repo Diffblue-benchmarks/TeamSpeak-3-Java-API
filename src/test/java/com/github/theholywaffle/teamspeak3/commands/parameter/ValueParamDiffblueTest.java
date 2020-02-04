@@ -7,7 +7,7 @@ public class ValueParamDiffblueTest {
   @Test
   public void constructorTest() {
     // Arrange, Act and Assert
-    assertEquals("aaaaa", (new ValueParam("aaaaa")).toString());
+    assertEquals("value", (new ValueParam("value")).toString());
   }
 }
 

@@ -21,7 +21,7 @@ public class TS3ApiDiffblueTest {
     // Arrange, Act and Assert
     thrown.expect(IllegalArgumentException.class);
     (new TS3Api(new TS3ApiAsync(new TS3Query())))
-        .editInstance(ServerInstanceProperty.CONNECTION_BANDWIDTH_RECEIVED_LAST_MINUTE_TOTAL, "aaaaa");
+        .editInstance(ServerInstanceProperty.CONNECTION_BANDWIDTH_RECEIVED_LAST_MINUTE_TOTAL, "value");
   }
   @Test
   public void getFileInfosTest() {
@@ -38,13 +38,13 @@ public class TS3ApiDiffblueTest {
   public void updateClientTest() {
     // Arrange, Act and Assert
     thrown.expect(IllegalArgumentException.class);
-    (new TS3Api(new TS3ApiAsync(new TS3Query()))).updateClient(ClientProperty.CID, "aaaaa");
+    (new TS3Api(new TS3ApiAsync(new TS3Query()))).updateClient(ClientProperty.CID, "value");
   }
   @Test
   public void editClientTest() {
     // Arrange, Act and Assert
     thrown.expect(IllegalArgumentException.class);
-    (new TS3Api(new TS3ApiAsync(new TS3Query()))).editClient(1, ClientProperty.CID, "aaaaa");
+    (new TS3Api(new TS3ApiAsync(new TS3Query()))).editClient(123, ClientProperty.CID, "value");
   }
 }
 

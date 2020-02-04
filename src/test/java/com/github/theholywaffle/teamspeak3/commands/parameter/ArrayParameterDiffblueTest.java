@@ -8,22 +8,22 @@ public class ArrayParameterDiffblueTest {
   @Test
   public void constructorTest2() {
     // Arrange, Act and Assert
-    assertEquals("", (new ArrayParameter(1, 1)).toString());
+    assertEquals("", (new ArrayParameter(10, 1)).toString());
   }
 
   @Test
   public void constructorTest() {
     // Arrange, Act and Assert
-    assertEquals("", (new ArrayParameter(1)).toString());
+    assertEquals("", (new ArrayParameter(10)).toString());
   }
 
   @Test
   public void addTest() {
     // Arrange
-    ArrayParameter arrayParameter = new ArrayParameter(1);
+    ArrayParameter arrayParameter = new ArrayParameter(10);
 
     // Act and Assert
-    assertSame(arrayParameter, arrayParameter.add(new ArrayParameter(1)));
+    assertSame(arrayParameter, arrayParameter.add(new ArrayParameter(10)));
   }
 }
 

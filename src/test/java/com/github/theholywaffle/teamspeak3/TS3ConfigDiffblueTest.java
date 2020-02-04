@@ -41,11 +41,11 @@ public class TS3ConfigDiffblueTest {
     TS3Config ts3Config = new TS3Config();
 
     // Act
-    TS3Config actualSetQueryPortResult = ts3Config.setQueryPort(1);
+    TS3Config actualSetQueryPortResult = ts3Config.setQueryPort(8080);
 
     // Assert
     assertSame(ts3Config, actualSetQueryPortResult);
-    assertEquals(1, actualSetQueryPortResult.getQueryPort());
+    assertEquals(8080, actualSetQueryPortResult.getQueryPort());
   }
   @Test
   public void getHostTest() {
@@ -109,11 +109,11 @@ public class TS3ConfigDiffblueTest {
     TS3Config ts3Config = new TS3Config();
 
     // Act
-    TS3Config actualSetHostResult = ts3Config.setHost("aaaaa");
+    TS3Config actualSetHostResult = ts3Config.setHost("localhost");
 
     // Assert
     assertSame(ts3Config, actualSetHostResult);
-    assertEquals("aaaaa", actualSetHostResult.getHost());
+    assertEquals("localhost", actualSetHostResult.getHost());
   }
   @Test
   public void getConnectionHandlerTest() {
@@ -126,11 +126,11 @@ public class TS3ConfigDiffblueTest {
     TS3Config ts3Config = new TS3Config();
 
     // Act
-    TS3Config actualSetCommandTimeoutResult = ts3Config.setCommandTimeout(1);
+    TS3Config actualSetCommandTimeoutResult = ts3Config.setCommandTimeout(10);
 
     // Assert
     assertSame(ts3Config, actualSetCommandTimeoutResult);
-    assertEquals(1, actualSetCommandTimeoutResult.getCommandTimeout());
+    assertEquals(10, actualSetCommandTimeoutResult.getCommandTimeout());
   }
   @Test
   public void setReconnectStrategyTest() {

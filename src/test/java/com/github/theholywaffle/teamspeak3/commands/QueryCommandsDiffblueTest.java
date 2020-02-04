@@ -9,26 +9,26 @@ public class QueryCommandsDiffblueTest {
   @Test
   public void logInTest() {
     // Arrange and Act
-    Command actualLogInResult = QueryCommands.logIn("client_nickname", "client_nickname");
+    Command actualLogInResult = QueryCommands.logIn("name", "Password123");
 
     // Assert
     String actualName = actualLogInResult.getName();
     String actualToStringResult = actualLogInResult.toString();
     assertEquals("login", actualName);
-    assertEquals("login client_nickname client_nickname", actualToStringResult);
+    assertEquals("login name Password123", actualToStringResult);
     assertFalse(actualLogInResult.getFuture().isCancelled());
   }
 
   @Test
   public void usePortTest() {
     // Arrange and Act
-    Command actualUsePortResult = QueryCommands.usePort(1, "client_nickname");
+    Command actualUsePortResult = QueryCommands.usePort(8080, "name");
 
     // Assert
     String actualName = actualUsePortResult.getName();
     String actualToStringResult = actualUsePortResult.toString();
     assertEquals("use", actualName);
-    assertEquals("use port=1 -virtual client_nickname=client" + "_nickname", actualToStringResult);
+    assertEquals("use port=8080 -virtual client_nickname=name", actualToStringResult);
     assertFalse(actualUsePortResult.getFuture().isCancelled());
   }
 
@@ -48,13 +48,13 @@ public class QueryCommandsDiffblueTest {
   @Test
   public void useIdTest() {
     // Arrange and Act
-    Command actualUseIdResult = QueryCommands.useId(1, "client_nickname");
+    Command actualUseIdResult = QueryCommands.useId(1, "name");
 
     // Assert
     String actualName = actualUseIdResult.getName();
     String actualToStringResult = actualUseIdResult.toString();
     assertEquals("use", actualName);
-    assertEquals("use sid=1 -virtual client_nickname=client_nickname", actualToStringResult);
+    assertEquals("use sid=1 -virtual client_nickname=name", actualToStringResult);
     assertFalse(actualUseIdResult.getFuture().isCancelled());
   }
 
@@ -100,13 +100,13 @@ public class QueryCommandsDiffblueTest {
   @Test
   public void serverNotifyRegisterTest() {
     // Arrange and Act
-    Command actualServerNotifyRegisterResult = QueryCommands.serverNotifyRegister(TS3EventType.SERVER, 1);
+    Command actualServerNotifyRegisterResult = QueryCommands.serverNotifyRegister(TS3EventType.SERVER, 123);
 
     // Assert
     String actualName = actualServerNotifyRegisterResult.getName();
     String actualToStringResult = actualServerNotifyRegisterResult.toString();
     assertEquals("servernotifyregister", actualName);
-    assertEquals("servernotifyregister event=server id=1", actualToStringResult);
+    assertEquals("servernotifyregister event=server id=123", actualToStringResult);
     assertFalse(actualServerNotifyRegisterResult.getFuture().isCancelled());
   }
 }

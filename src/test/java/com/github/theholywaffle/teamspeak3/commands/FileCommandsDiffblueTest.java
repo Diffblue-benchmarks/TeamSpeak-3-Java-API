@@ -14,26 +14,28 @@ public class FileCommandsDiffblueTest {
   @Test
   public void ftInitDownloadTest() {
     // Arrange and Act
-    Command actualFtInitDownloadResult = FileCommands.ftInitDownload(1, "/", 1, "/");
+    Command actualFtInitDownloadResult = FileCommands.ftInitDownload(123, "/", 123, "Password123");
 
     // Assert
     String actualName = actualFtInitDownloadResult.getName();
     String actualToStringResult = actualFtInitDownloadResult.toString();
     assertEquals("ftinitdownload", actualName);
-    assertEquals("ftinitdownload clientftfid=1 name=\\/ cid=1 cpw=\\/" + " seekpos=0 proto=0", actualToStringResult);
+    assertEquals("ftinitdownload clientftfid=123 name=\\/ cid=123" + " cpw=Password123 seekpos=0 proto=0",
+        actualToStringResult);
     assertFalse(actualFtInitDownloadResult.getFuture().isCancelled());
   }
 
   @Test
   public void ftInitUploadTest() {
     // Arrange and Act
-    Command actualFtInitUploadResult = FileCommands.ftInitUpload(1, "/", 1, "/", 1L, true);
+    Command actualFtInitUploadResult = FileCommands.ftInitUpload(123, "/", 123, "Password123", 3L, true);
 
     // Assert
     String actualName = actualFtInitUploadResult.getName();
     String actualToStringResult = actualFtInitUploadResult.toString();
     assertEquals("ftinitupload", actualName);
-    assertEquals("ftinitupload clientftfid=1 name=\\/ cid=1 cpw=\\/" + " size=1 overwrite=1 resume=0 proto=0",
+    assertEquals(
+        "ftinitupload clientftfid=123 name=\\/ cid=123" + " cpw=Password123 size=3 overwrite=1 resume=0" + " proto=0",
         actualToStringResult);
     assertFalse(actualFtInitUploadResult.getFuture().isCancelled());
   }
@@ -41,13 +43,14 @@ public class FileCommandsDiffblueTest {
   @Test
   public void ftRenameFileTest2() {
     // Arrange and Act
-    Command actualFtRenameFileResult = FileCommands.ftRenameFile("/", "/", 1, "/", 1, "/");
+    Command actualFtRenameFileResult = FileCommands.ftRenameFile("/", "/", 123, "Password123", 123, "Password123");
 
     // Assert
     String actualName = actualFtRenameFileResult.getName();
     String actualToStringResult = actualFtRenameFileResult.toString();
     assertEquals("ftrenamefile", actualName);
-    assertEquals("ftrenamefile cid=1 cpw=\\/ tcid=1 tcpw=\\/ oldname=\\/" + " newname=\\/", actualToStringResult);
+    assertEquals("ftrenamefile cid=123 cpw=Password123 tcid=123" + " tcpw=Password123 oldname=\\/ newname=\\/",
+        actualToStringResult);
     assertFalse(actualFtRenameFileResult.getFuture().isCancelled());
   }
 
@@ -67,26 +70,26 @@ public class FileCommandsDiffblueTest {
   @Test
   public void ftDeleteFileTest() {
     // Arrange and Act
-    Command actualFtDeleteFileResult = FileCommands.ftDeleteFile(1, "/", "/", "/", "/");
+    Command actualFtDeleteFileResult = FileCommands.ftDeleteFile(123, "Password123", "/", "/", "/");
 
     // Assert
     String actualName = actualFtDeleteFileResult.getName();
     String actualToStringResult = actualFtDeleteFileResult.toString();
     assertEquals("ftdeletefile", actualName);
-    assertEquals("ftdeletefile cid=1 cpw=\\/ name=\\/|name=\\/|name=\\/", actualToStringResult);
+    assertEquals("ftdeletefile cid=123 cpw=Password123 name=\\/|name=" + "\\/|name=\\/", actualToStringResult);
     assertFalse(actualFtDeleteFileResult.getFuture().isCancelled());
   }
 
   @Test
   public void ftGetFileListTest() {
     // Arrange and Act
-    Command actualFtGetFileListResult = FileCommands.ftGetFileList("/", 1, "/");
+    Command actualFtGetFileListResult = FileCommands.ftGetFileList("/tmp", 123, "Password123");
 
     // Assert
     String actualName = actualFtGetFileListResult.getName();
     String actualToStringResult = actualFtGetFileListResult.toString();
     assertEquals("ftgetfilelist", actualName);
-    assertEquals("ftgetfilelist cid=1 cpw=\\/ path=\\/", actualToStringResult);
+    assertEquals("ftgetfilelist cid=123 cpw=Password123 path=\\/tmp\\/", actualToStringResult);
     assertFalse(actualFtGetFileListResult.getFuture().isCancelled());
   }
 
@@ -104,40 +107,40 @@ public class FileCommandsDiffblueTest {
   @Test
   public void ftCreateDirTest() {
     // Arrange and Act
-    Command actualFtCreateDirResult = FileCommands.ftCreateDir("/", 1, "/");
+    Command actualFtCreateDirResult = FileCommands.ftCreateDir("/", 123, "Password123");
 
     // Assert
     String actualName = actualFtCreateDirResult.getName();
     String actualToStringResult = actualFtCreateDirResult.toString();
     assertEquals("ftcreatedir", actualName);
-    assertEquals("ftcreatedir cid=1 cpw=\\/ dirname=\\/", actualToStringResult);
+    assertEquals("ftcreatedir cid=123 cpw=Password123 dirname=\\/", actualToStringResult);
     assertFalse(actualFtCreateDirResult.getFuture().isCancelled());
   }
 
   @Test
   public void ftRenameFileTest() {
     // Arrange and Act
-    Command actualFtRenameFileResult = FileCommands.ftRenameFile("/", "/", 1, "/");
+    Command actualFtRenameFileResult = FileCommands.ftRenameFile("/", "/", 123, "Password123");
 
     // Assert
     String actualName = actualFtRenameFileResult.getName();
     String actualToStringResult = actualFtRenameFileResult.toString();
     assertEquals("ftrenamefile", actualName);
-    assertEquals("ftrenamefile cid=1 cpw=\\/ oldname=\\/ newname=\\/", actualToStringResult);
+    assertEquals("ftrenamefile cid=123 cpw=Password123 oldname=\\/" + " newname=\\/", actualToStringResult);
     assertFalse(actualFtRenameFileResult.getFuture().isCancelled());
   }
 
   @Test
   public void ftGetFileInfoTest() {
     // Arrange and Act
-    Command actualFtGetFileInfoResult = FileCommands.ftGetFileInfo(1, "/", "/", "/", "/");
+    Command actualFtGetFileInfoResult = FileCommands.ftGetFileInfo(123, "Password123", "/", "/", "/");
 
     // Assert
     String actualName = actualFtGetFileInfoResult.getName();
     String actualToStringResult = actualFtGetFileInfoResult.toString();
     assertEquals("ftgetfileinfo", actualName);
-    assertEquals("ftgetfileinfo cid=1 cpw=\\/ name=\\/|cid=1 cpw=\\/" + " name=\\/|cid=1 cpw=\\/ name=\\/",
-        actualToStringResult);
+    assertEquals("ftgetfileinfo cid=123 cpw=Password123 name=\\/|cid=123"
+        + " cpw=Password123 name=\\/|cid=123 cpw=Password123" + " name=\\/", actualToStringResult);
     assertFalse(actualFtGetFileInfoResult.getFuture().isCancelled());
   }
 }

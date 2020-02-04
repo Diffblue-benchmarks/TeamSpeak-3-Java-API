@@ -8,17 +8,17 @@ public class CommandDiffblueTest {
   @Test
   public void getNameTest() {
     // Arrange, Act and Assert
-    assertEquals("aaaaa", (new Command("aaaaa", null)).getName());
+    assertEquals("name", (new Command("name", null)).getName());
   }
 
   @Test
   public void constructorTest() {
     // Arrange and Act
-    Command actualCommand = new Command("aaaaa", null);
+    Command actualCommand = new Command("name", null);
 
     // Assert
     String actualName = actualCommand.getName();
-    assertEquals("aaaaa", actualName);
+    assertEquals("name", actualName);
     assertFalse(actualCommand.getFuture().isDone());
   }
 }

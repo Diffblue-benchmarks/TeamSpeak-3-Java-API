@@ -15,7 +15,7 @@ public class FileTransferHelperDiffblueTest {
   @Test
   public void readFullyTest() throws IOException {
     // Arrange, Act and Assert
-    assertEquals(1, FileTransferHelper.readFully(new ByteArrayInputStream(new byte[24]), 1L).length);
+    assertEquals(3, FileTransferHelper.readFully(new ByteArrayInputStream(new byte[24]), 3L).length);
   }
 }
 

@@ -9,14 +9,27 @@ public class ChannelGroupCommandsDiffblueTest {
   @Test
   public void channelGroupClientListTest() {
     // Arrange and Act
-    Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(1, 1, 1);
+    Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(123, 123, 123);
 
     // Assert
     String actualName = actualChannelGroupClientListResult.getName();
     String actualToStringResult = actualChannelGroupClientListResult.toString();
     assertEquals("channelgroupclientlist", actualName);
-    assertEquals("channelgroupclientlist cid=1 cldbid=1 cgid=1", actualToStringResult);
+    assertEquals("channelgroupclientlist cid=123 cldbid=123 cgid=123", actualToStringResult);
     assertFalse(actualChannelGroupClientListResult.getFuture().isCancelled());
+  }
+
+  @Test
+  public void setClientChannelGroupTest() {
+    // Arrange and Act
+    Command actualSetClientChannelGroupResult = ChannelGroupCommands.setClientChannelGroup(123, 123, 123);
+
+    // Assert
+    String actualName = actualSetClientChannelGroupResult.getName();
+    String actualToStringResult = actualSetClientChannelGroupResult.toString();
+    assertEquals("setclientchannelgroup", actualName);
+    assertEquals("setclientchannelgroup cgid=123 cid=123 cldbid=123", actualToStringResult);
+    assertFalse(actualSetClientChannelGroupResult.getFuture().isCancelled());
   }
 
   @Test
@@ -35,68 +48,68 @@ public class ChannelGroupCommandsDiffblueTest {
   @Test
   public void channelGroupCopyTest2() {
     // Arrange and Act
-    Command actualChannelGroupCopyResult = ChannelGroupCommands.channelGroupCopy(1, 1,
+    Command actualChannelGroupCopyResult = ChannelGroupCommands.channelGroupCopy(123, 123,
         PermissionGroupDatabaseType.TEMPLATE);
 
     // Assert
     String actualName = actualChannelGroupCopyResult.getName();
     String actualToStringResult = actualChannelGroupCopyResult.toString();
     assertEquals("channelgroupcopy", actualName);
-    assertEquals("channelgroupcopy scgid=1 tcgid=1 name=name type=0", actualToStringResult);
+    assertEquals("channelgroupcopy scgid=123 tcgid=123 name=name" + " type=0", actualToStringResult);
     assertFalse(actualChannelGroupCopyResult.getFuture().isCancelled());
   }
 
   @Test
   public void channelGroupAddTest() {
     // Arrange and Act
-    Command actualChannelGroupAddResult = ChannelGroupCommands.channelGroupAdd("cgid",
+    Command actualChannelGroupAddResult = ChannelGroupCommands.channelGroupAdd("name",
         PermissionGroupDatabaseType.TEMPLATE);
 
     // Assert
     String actualName = actualChannelGroupAddResult.getName();
     String actualToStringResult = actualChannelGroupAddResult.toString();
     assertEquals("channelgroupadd", actualName);
-    assertEquals("channelgroupadd name=cgid type=0", actualToStringResult);
+    assertEquals("channelgroupadd name=name type=0", actualToStringResult);
     assertFalse(actualChannelGroupAddResult.getFuture().isCancelled());
   }
 
   @Test
   public void channelGroupCopyTest() {
     // Arrange and Act
-    Command actualChannelGroupCopyResult = ChannelGroupCommands.channelGroupCopy(1, "cgid",
+    Command actualChannelGroupCopyResult = ChannelGroupCommands.channelGroupCopy(123, "name",
         PermissionGroupDatabaseType.TEMPLATE);
 
     // Assert
     String actualName = actualChannelGroupCopyResult.getName();
     String actualToStringResult = actualChannelGroupCopyResult.toString();
     assertEquals("channelgroupcopy", actualName);
-    assertEquals("channelgroupcopy scgid=1 tcgid=0 name=cgid type=0", actualToStringResult);
+    assertEquals("channelgroupcopy scgid=123 tcgid=0 name=name" + " type=0", actualToStringResult);
     assertFalse(actualChannelGroupCopyResult.getFuture().isCancelled());
   }
 
   @Test
   public void channelGroupDelTest() {
     // Arrange and Act
-    Command actualChannelGroupDelResult = ChannelGroupCommands.channelGroupDel(1, true);
+    Command actualChannelGroupDelResult = ChannelGroupCommands.channelGroupDel(123, true);
 
     // Assert
     String actualName = actualChannelGroupDelResult.getName();
     String actualToStringResult = actualChannelGroupDelResult.toString();
     assertEquals("channelgroupdel", actualName);
-    assertEquals("channelgroupdel cgid=1 force=1", actualToStringResult);
+    assertEquals("channelgroupdel cgid=123 force=1", actualToStringResult);
     assertFalse(actualChannelGroupDelResult.getFuture().isCancelled());
   }
 
   @Test
   public void channelGroupRenameTest() {
     // Arrange and Act
-    Command actualChannelGroupRenameResult = ChannelGroupCommands.channelGroupRename(1, "cgid");
+    Command actualChannelGroupRenameResult = ChannelGroupCommands.channelGroupRename(123, "name");
 
     // Assert
     String actualName = actualChannelGroupRenameResult.getName();
     String actualToStringResult = actualChannelGroupRenameResult.toString();
     assertEquals("channelgrouprename", actualName);
-    assertEquals("channelgrouprename cgid=1 name=cgid", actualToStringResult);
+    assertEquals("channelgrouprename cgid=123 name=name", actualToStringResult);
     assertFalse(actualChannelGroupRenameResult.getFuture().isCancelled());
   }
 }

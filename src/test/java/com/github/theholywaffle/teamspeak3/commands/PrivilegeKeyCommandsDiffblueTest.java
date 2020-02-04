@@ -9,14 +9,14 @@ public class PrivilegeKeyCommandsDiffblueTest {
   @Test
   public void privilegeKeyAddTest() {
     // Arrange and Act
-    Command actualPrivilegeKeyAddResult = PrivilegeKeyCommands.privilegeKeyAdd(PrivilegeKeyType.SERVER_GROUP, 1, 1,
-        "privilegekeyadd");
+    Command actualPrivilegeKeyAddResult = PrivilegeKeyCommands.privilegeKeyAdd(PrivilegeKeyType.SERVER_GROUP, 123, 123,
+        "description");
 
     // Assert
     String actualName = actualPrivilegeKeyAddResult.getName();
     String actualToStringResult = actualPrivilegeKeyAddResult.toString();
     assertEquals("privilegekeyadd", actualName);
-    assertEquals("privilegekeyadd tokentype=0 tokenid1=1 tokenid2=1" + " tokendescription=privilegekeyadd",
+    assertEquals("privilegekeyadd tokentype=0 tokenid1=123 tokenid2=123" + " tokendescription=description",
         actualToStringResult);
     assertFalse(actualPrivilegeKeyAddResult.getFuture().isCancelled());
   }
@@ -24,13 +24,13 @@ public class PrivilegeKeyCommandsDiffblueTest {
   @Test
   public void privilegeKeyUseTest() {
     // Arrange and Act
-    Command actualPrivilegeKeyUseResult = PrivilegeKeyCommands.privilegeKeyUse("privilegekeyadd");
+    Command actualPrivilegeKeyUseResult = PrivilegeKeyCommands.privilegeKeyUse("ABC123");
 
     // Assert
     String actualName = actualPrivilegeKeyUseResult.getName();
     String actualToStringResult = actualPrivilegeKeyUseResult.toString();
     assertEquals("privilegekeyuse", actualName);
-    assertEquals("privilegekeyuse token=privilegekeyadd", actualToStringResult);
+    assertEquals("privilegekeyuse token=ABC123", actualToStringResult);
     assertFalse(actualPrivilegeKeyUseResult.getFuture().isCancelled());
   }
 
@@ -50,13 +50,13 @@ public class PrivilegeKeyCommandsDiffblueTest {
   @Test
   public void privilegeKeyDeleteTest() {
     // Arrange and Act
-    Command actualPrivilegeKeyDeleteResult = PrivilegeKeyCommands.privilegeKeyDelete("privilegekeyadd");
+    Command actualPrivilegeKeyDeleteResult = PrivilegeKeyCommands.privilegeKeyDelete("ABC123");
 
     // Assert
     String actualName = actualPrivilegeKeyDeleteResult.getName();
     String actualToStringResult = actualPrivilegeKeyDeleteResult.toString();
     assertEquals("privilegekeydelete", actualName);
-    assertEquals("privilegekeydelete token=privilegekeyadd", actualToStringResult);
+    assertEquals("privilegekeydelete token=ABC123", actualToStringResult);
     assertFalse(actualPrivilegeKeyDeleteResult.getFuture().isCancelled());
   }
 }

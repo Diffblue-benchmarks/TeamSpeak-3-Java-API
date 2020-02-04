@@ -8,52 +8,52 @@ public class MessageCommandsDiffblueTest {
   @Test
   public void messageUpdateFlagTest() {
     // Arrange and Act
-    Command actualMessageUpdateFlagResult = MessageCommands.messageUpdateFlag(1, true);
+    Command actualMessageUpdateFlagResult = MessageCommands.messageUpdateFlag(123, true);
 
     // Assert
     String actualName = actualMessageUpdateFlagResult.getName();
     String actualToStringResult = actualMessageUpdateFlagResult.toString();
     assertEquals("messageupdateflag", actualName);
-    assertEquals("messageupdateflag msgid=1 flag=1", actualToStringResult);
+    assertEquals("messageupdateflag msgid=123 flag=1", actualToStringResult);
     assertFalse(actualMessageUpdateFlagResult.getFuture().isCancelled());
   }
 
   @Test
   public void messageGetTest() {
     // Arrange and Act
-    Command actualMessageGetResult = MessageCommands.messageGet(1);
+    Command actualMessageGetResult = MessageCommands.messageGet(123);
 
     // Assert
     String actualName = actualMessageGetResult.getName();
     String actualToStringResult = actualMessageGetResult.toString();
     assertEquals("messageget", actualName);
-    assertEquals("messageget msgid=1", actualToStringResult);
+    assertEquals("messageget msgid=123", actualToStringResult);
     assertFalse(actualMessageGetResult.getFuture().isCancelled());
   }
 
   @Test
   public void messageDelTest() {
     // Arrange and Act
-    Command actualMessageDelResult = MessageCommands.messageDel(1);
+    Command actualMessageDelResult = MessageCommands.messageDel(123);
 
     // Assert
     String actualName = actualMessageDelResult.getName();
     String actualToStringResult = actualMessageDelResult.toString();
     assertEquals("messagedel", actualName);
-    assertEquals("messagedel msgid=1", actualToStringResult);
+    assertEquals("messagedel msgid=123", actualToStringResult);
     assertFalse(actualMessageDelResult.getFuture().isCancelled());
   }
 
   @Test
   public void messageAddTest() {
     // Arrange and Act
-    Command actualMessageAddResult = MessageCommands.messageAdd("cluid", "cluid", "cluid");
+    Command actualMessageAddResult = MessageCommands.messageAdd("123", "cluid", "message");
 
     // Assert
     String actualName = actualMessageAddResult.getName();
     String actualToStringResult = actualMessageAddResult.toString();
     assertEquals("messageadd", actualName);
-    assertEquals("messageadd cluid=cluid subject=cluid message=cluid", actualToStringResult);
+    assertEquals("messageadd cluid=123 subject=cluid message=message", actualToStringResult);
     assertFalse(actualMessageAddResult.getFuture().isCancelled());
   }
 

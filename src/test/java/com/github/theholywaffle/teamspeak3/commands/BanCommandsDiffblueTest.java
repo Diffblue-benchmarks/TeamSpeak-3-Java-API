@@ -21,26 +21,26 @@ public class BanCommandsDiffblueTest {
   @Test
   public void banClientTest() {
     // Arrange and Act
-    Command actualBanClientResult = BanCommands.banClient(1, 1L, "banadd");
+    Command actualBanClientResult = BanCommands.banClient(123, 10L, "because");
 
     // Assert
     String actualName = actualBanClientResult.getName();
     String actualToStringResult = actualBanClientResult.toString();
     assertEquals("banclient", actualName);
-    assertEquals("banclient clid=1 time=1 banreason=banadd", actualToStringResult);
+    assertEquals("banclient clid=123 time=10 banreason=because", actualToStringResult);
     assertFalse(actualBanClientResult.getFuture().isCancelled());
   }
 
   @Test
   public void banAddTest() {
     // Arrange and Act
-    Command actualBanAddResult = BanCommands.banAdd("banadd", "banadd", "banadd", "banadd", 1L, "banadd");
+    Command actualBanAddResult = BanCommands.banAdd("127.0.0.1", "name", "12345678", "123", 10L, "because");
 
     // Assert
     String actualName = actualBanAddResult.getName();
     String actualToStringResult = actualBanAddResult.toString();
     assertEquals("banadd", actualName);
-    assertEquals("banadd ip=banadd name=banadd uid=banadd mytsid=banadd" + " time=1 banreason=banadd",
+    assertEquals("banadd ip=127.0.0.1 name=name uid=12345678 mytsid=123" + " time=10 banreason=because",
         actualToStringResult);
     assertFalse(actualBanAddResult.getFuture().isCancelled());
   }
@@ -61,13 +61,13 @@ public class BanCommandsDiffblueTest {
   @Test
   public void banDelTest() {
     // Arrange and Act
-    Command actualBanDelResult = BanCommands.banDel(1);
+    Command actualBanDelResult = BanCommands.banDel(123);
 
     // Assert
     String actualName = actualBanDelResult.getName();
     String actualToStringResult = actualBanDelResult.toString();
     assertEquals("bandel", actualName);
-    assertEquals("bandel banid=1", actualToStringResult);
+    assertEquals("bandel banid=123", actualToStringResult);
     assertFalse(actualBanDelResult.getFuture().isCancelled());
   }
 }
