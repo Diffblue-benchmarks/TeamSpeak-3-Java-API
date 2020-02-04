@@ -2,9 +2,14 @@ package com.github.theholywaffle.teamspeak3.commands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class DatabaseClientCommandsDiffblueTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test
   public void clientDBEditTest() {
     // Arrange and Act
@@ -32,15 +37,22 @@ public class DatabaseClientCommandsDiffblueTest {
   }
 
   @Test
+  public void clientDBFindTest2() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    DatabaseClientCommands.clientDBFind("", true);
+  }
+
+  @Test
   public void clientDBFindTest() {
     // Arrange and Act
-    Command actualClientDBFindResult = DatabaseClientCommands.clientDBFind("foo", true);
+    Command actualClientDBFindResult = DatabaseClientCommands.clientDBFind("cldbid", true);
 
     // Assert
     String actualName = actualClientDBFindResult.getName();
     String actualToStringResult = actualClientDBFindResult.toString();
     assertEquals("clientdbfind", actualName);
-    assertEquals("clientdbfind pattern=foo -uid", actualToStringResult);
+    assertEquals("clientdbfind pattern=cldbid -uid", actualToStringResult);
     assertFalse(actualClientDBFindResult.getFuture().isCancelled());
   }
 

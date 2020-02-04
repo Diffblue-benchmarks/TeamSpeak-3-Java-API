@@ -75,6 +75,13 @@ public class CommandFutureDiffblueTest {
   }
 
   @Test
+  public void awaitTest2() throws InterruptedException, TimeoutException {
+    // Arrange, Act and Assert
+    thrown.expect(TimeoutException.class);
+    (new CommandFuture<Object>()).await(310331589L, TimeUnit.NANOSECONDS);
+  }
+
+  @Test
   public void awaitTest() throws InterruptedException, TimeoutException {
     // Arrange, Act and Assert
     thrown.expect(TimeoutException.class);
@@ -102,6 +109,13 @@ public class CommandFutureDiffblueTest {
   public void constructorTest() {
     // Arrange, Act and Assert
     assertFalse((new CommandFuture<Object>()).isDone());
+  }
+
+  @Test
+  public void getUninterruptiblyTest2() throws TimeoutException {
+    // Arrange, Act and Assert
+    thrown.expect(TimeoutException.class);
+    (new CommandFuture<Object>()).getUninterruptibly(310316003L, TimeUnit.NANOSECONDS);
   }
 
   @Test
@@ -142,7 +156,7 @@ public class CommandFutureDiffblueTest {
     CommandFuture<Object> commandFuture = new CommandFuture<Object>();
 
     // Act and Assert
-    assertTrue(commandFuture.fail(new TS3Exception("foo")));
+    assertTrue(commandFuture.fail(new TS3Exception("aaaaa")));
     assertTrue(commandFuture.isDone());
   }
 

@@ -3,11 +3,16 @@ package com.github.theholywaffle.teamspeak3.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import com.github.theholywaffle.teamspeak3.api.event.TS3EventType;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class QueryCommandsDiffblueTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test
-  public void logInTest() {
+  public void logInTest3() {
     // Arrange and Act
     Command actualLogInResult = QueryCommands.logIn("name", "Password123");
 
@@ -17,6 +22,20 @@ public class QueryCommandsDiffblueTest {
     assertEquals("login", actualName);
     assertEquals("login name Password123", actualToStringResult);
     assertFalse(actualLogInResult.getFuture().isCancelled());
+  }
+
+  @Test
+  public void logInTest2() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    QueryCommands.logIn("name", "");
+  }
+
+  @Test
+  public void logInTest() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    QueryCommands.logIn("", "Password123");
   }
 
   @Test
@@ -98,7 +117,7 @@ public class QueryCommandsDiffblueTest {
   }
 
   @Test
-  public void serverNotifyRegisterTest() {
+  public void serverNotifyRegisterTest2() {
     // Arrange and Act
     Command actualServerNotifyRegisterResult = QueryCommands.serverNotifyRegister(TS3EventType.SERVER, 123);
 
@@ -107,6 +126,19 @@ public class QueryCommandsDiffblueTest {
     String actualToStringResult = actualServerNotifyRegisterResult.toString();
     assertEquals("servernotifyregister", actualName);
     assertEquals("servernotifyregister event=server id=123", actualToStringResult);
+    assertFalse(actualServerNotifyRegisterResult.getFuture().isCancelled());
+  }
+
+  @Test
+  public void serverNotifyRegisterTest() {
+    // Arrange and Act
+    Command actualServerNotifyRegisterResult = QueryCommands.serverNotifyRegister(TS3EventType.SERVER, -1);
+
+    // Assert
+    String actualName = actualServerNotifyRegisterResult.getName();
+    String actualToStringResult = actualServerNotifyRegisterResult.toString();
+    assertEquals("servernotifyregister", actualName);
+    assertEquals("servernotifyregister event=server", actualToStringResult);
     assertFalse(actualServerNotifyRegisterResult.getFuture().isCancelled());
   }
 }

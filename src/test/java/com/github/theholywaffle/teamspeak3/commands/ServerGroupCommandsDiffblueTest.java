@@ -3,9 +3,14 @@ package com.github.theholywaffle.teamspeak3.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import com.github.theholywaffle.teamspeak3.api.PermissionGroupDatabaseType;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class ServerGroupCommandsDiffblueTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test
   public void serverGroupCopyTest2() {
     // Arrange and Act
@@ -47,7 +52,7 @@ public class ServerGroupCommandsDiffblueTest {
   }
 
   @Test
-  public void serverGroupRenameTest() {
+  public void serverGroupRenameTest2() {
     // Arrange and Act
     Command actualServerGroupRenameResult = ServerGroupCommands.serverGroupRename(1, "name");
 
@@ -57,6 +62,20 @@ public class ServerGroupCommandsDiffblueTest {
     assertEquals("servergrouprename", actualName);
     assertEquals("servergrouprename sgid=1 name=name", actualToStringResult);
     assertFalse(actualServerGroupRenameResult.getFuture().isCancelled());
+  }
+
+  @Test
+  public void serverGroupRenameTest() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    ServerGroupCommands.serverGroupRename(1, "");
+  }
+
+  @Test
+  public void serverGroupAddTest2() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    ServerGroupCommands.serverGroupAdd("", PermissionGroupDatabaseType.TEMPLATE);
   }
 
   @Test

@@ -7,25 +7,32 @@ public class KeyValueParamDiffblueTest {
   @Test
   public void constructorTest4() {
     // Arrange, Act and Assert
-    assertEquals("foo=42", (new KeyValueParam("foo", 42)).toString());
+    assertEquals("=42", (new KeyValueParam("", 42)).toString());
   }
 
   @Test
   public void constructorTest3() {
-    // Arrange, Act and Assert
-    assertEquals("foo=1", (new KeyValueParam("foo", true)).toString());
+    // Arrange
+    KeyValueParam keyValueParam = new KeyValueParam("", true);
+
+    // Act
+    KeyValueParam actualKeyValueParam = new KeyValueParam("", false);
+
+    // Assert
+    assertEquals("=1", keyValueParam.toString());
+    assertEquals("=0", actualKeyValueParam.toString());
   }
 
   @Test
   public void constructorTest2() {
     // Arrange, Act and Assert
-    assertEquals("foo=42", (new KeyValueParam("foo", 42L)).toString());
+    assertEquals("=42", (new KeyValueParam("", 42L)).toString());
   }
 
   @Test
   public void constructorTest() {
     // Arrange, Act and Assert
-    assertEquals("foo=value", (new KeyValueParam("foo", "value")).toString());
+    assertEquals("=value", (new KeyValueParam("", "value")).toString());
   }
 }
 

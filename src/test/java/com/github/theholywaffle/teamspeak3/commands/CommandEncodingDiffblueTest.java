@@ -7,13 +7,13 @@ public class CommandEncodingDiffblueTest {
   @Test
   public void encodeTest() {
     // Arrange, Act and Assert
-    assertEquals("foo", CommandEncoding.encode("foo"));
+    assertEquals("aaaaa", CommandEncoding.encode("aaaaa"));
   }
 
   @Test
   public void decodeTest() {
     // Arrange, Act and Assert
-    assertEquals("foo", CommandEncoding.decode("foo"));
+    assertEquals("aaaaa", CommandEncoding.decode("aaaaa"));
   }
 }
 

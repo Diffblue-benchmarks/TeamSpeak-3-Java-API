@@ -3,11 +3,39 @@ package com.github.theholywaffle.teamspeak3.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import com.github.theholywaffle.teamspeak3.api.PermissionGroupDatabaseType;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class ChannelGroupCommandsDiffblueTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
   @Test
-  public void channelGroupClientListTest() {
+  public void channelGroupClientListTest4() {
+    // Arrange and Act
+    Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(0, 123, 123);
+
+    // Assert
+    String actualName = actualChannelGroupClientListResult.getName();
+    String actualToStringResult = actualChannelGroupClientListResult.toString();
+    assertEquals("channelgroupclientlist", actualName);
+    assertEquals("channelgroupclientlist cldbid=123 cgid=123", actualToStringResult);
+    assertFalse(actualChannelGroupClientListResult.getFuture().isCancelled());
+  }
+  @Test
+  public void channelGroupClientListTest3() {
+    // Arrange and Act
+    Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(123, 123, 0);
+
+    // Assert
+    String actualName = actualChannelGroupClientListResult.getName();
+    String actualToStringResult = actualChannelGroupClientListResult.toString();
+    assertEquals("channelgroupclientlist", actualName);
+    assertEquals("channelgroupclientlist cid=123 cldbid=123", actualToStringResult);
+    assertFalse(actualChannelGroupClientListResult.getFuture().isCancelled());
+  }
+  @Test
+  public void channelGroupClientListTest2() {
     // Arrange and Act
     Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(123, 123, 123);
 
@@ -18,7 +46,18 @@ public class ChannelGroupCommandsDiffblueTest {
     assertEquals("channelgroupclientlist cid=123 cldbid=123 cgid=123", actualToStringResult);
     assertFalse(actualChannelGroupClientListResult.getFuture().isCancelled());
   }
+  @Test
+  public void channelGroupClientListTest() {
+    // Arrange and Act
+    Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(123, 0, 123);
 
+    // Assert
+    String actualName = actualChannelGroupClientListResult.getName();
+    String actualToStringResult = actualChannelGroupClientListResult.toString();
+    assertEquals("channelgroupclientlist", actualName);
+    assertEquals("channelgroupclientlist cid=123 cgid=123", actualToStringResult);
+    assertFalse(actualChannelGroupClientListResult.getFuture().isCancelled());
+  }
   @Test
   public void setClientChannelGroupTest() {
     // Arrange and Act
@@ -31,7 +70,6 @@ public class ChannelGroupCommandsDiffblueTest {
     assertEquals("setclientchannelgroup cgid=123 cid=123 cldbid=123", actualToStringResult);
     assertFalse(actualSetClientChannelGroupResult.getFuture().isCancelled());
   }
-
   @Test
   public void channelGroupListTest() {
     // Arrange and Act
@@ -44,9 +82,8 @@ public class ChannelGroupCommandsDiffblueTest {
     assertEquals("channelgrouplist", actualToStringResult);
     assertFalse(actualChannelGroupListResult.getFuture().isCancelled());
   }
-
   @Test
-  public void channelGroupCopyTest2() {
+  public void channelGroupCopyTest3() {
     // Arrange and Act
     Command actualChannelGroupCopyResult = ChannelGroupCommands.channelGroupCopy(123, 123,
         PermissionGroupDatabaseType.TEMPLATE);
@@ -58,7 +95,12 @@ public class ChannelGroupCommandsDiffblueTest {
     assertEquals("channelgroupcopy scgid=123 tcgid=123 name=name" + " type=0", actualToStringResult);
     assertFalse(actualChannelGroupCopyResult.getFuture().isCancelled());
   }
-
+  @Test
+  public void channelGroupAddTest2() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    ChannelGroupCommands.channelGroupAdd("", PermissionGroupDatabaseType.TEMPLATE);
+  }
   @Test
   public void channelGroupAddTest() {
     // Arrange and Act
@@ -72,9 +114,8 @@ public class ChannelGroupCommandsDiffblueTest {
     assertEquals("channelgroupadd name=name type=0", actualToStringResult);
     assertFalse(actualChannelGroupAddResult.getFuture().isCancelled());
   }
-
   @Test
-  public void channelGroupCopyTest() {
+  public void channelGroupCopyTest2() {
     // Arrange and Act
     Command actualChannelGroupCopyResult = ChannelGroupCommands.channelGroupCopy(123, "name",
         PermissionGroupDatabaseType.TEMPLATE);
@@ -86,7 +127,12 @@ public class ChannelGroupCommandsDiffblueTest {
     assertEquals("channelgroupcopy scgid=123 tcgid=0 name=name" + " type=0", actualToStringResult);
     assertFalse(actualChannelGroupCopyResult.getFuture().isCancelled());
   }
-
+  @Test
+  public void channelGroupCopyTest() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    ChannelGroupCommands.channelGroupCopy(123, "", PermissionGroupDatabaseType.TEMPLATE);
+  }
   @Test
   public void channelGroupDelTest() {
     // Arrange and Act
@@ -99,9 +145,8 @@ public class ChannelGroupCommandsDiffblueTest {
     assertEquals("channelgroupdel cgid=123 force=1", actualToStringResult);
     assertFalse(actualChannelGroupDelResult.getFuture().isCancelled());
   }
-
   @Test
-  public void channelGroupRenameTest() {
+  public void channelGroupRenameTest2() {
     // Arrange and Act
     Command actualChannelGroupRenameResult = ChannelGroupCommands.channelGroupRename(123, "name");
 
@@ -111,6 +156,12 @@ public class ChannelGroupCommandsDiffblueTest {
     assertEquals("channelgrouprename", actualName);
     assertEquals("channelgrouprename cgid=123 name=name", actualToStringResult);
     assertFalse(actualChannelGroupRenameResult.getFuture().isCancelled());
+  }
+  @Test
+  public void channelGroupRenameTest() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    ChannelGroupCommands.channelGroupRename(123, "");
   }
 }
 

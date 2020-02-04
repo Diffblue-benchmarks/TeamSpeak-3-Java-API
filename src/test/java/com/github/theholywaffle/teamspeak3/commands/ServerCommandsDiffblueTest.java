@@ -84,7 +84,7 @@ public class ServerCommandsDiffblueTest {
   }
 
   @Test
-  public void logViewTest() {
+  public void logViewTest2() {
     // Arrange and Act
     Command actualLogViewResult = ServerCommands.logView(2, true);
 
@@ -93,6 +93,19 @@ public class ServerCommandsDiffblueTest {
     String actualToStringResult = actualLogViewResult.toString();
     assertEquals("logview", actualName);
     assertEquals("logview lines=2 instance=1", actualToStringResult);
+    assertFalse(actualLogViewResult.getFuture().isCancelled());
+  }
+
+  @Test
+  public void logViewTest() {
+    // Arrange and Act
+    Command actualLogViewResult = ServerCommands.logView(0, true);
+
+    // Assert
+    String actualName = actualLogViewResult.getName();
+    String actualToStringResult = actualLogViewResult.toString();
+    assertEquals("logview", actualName);
+    assertEquals("logview instance=1", actualToStringResult);
     assertFalse(actualLogViewResult.getFuture().isCancelled());
   }
 

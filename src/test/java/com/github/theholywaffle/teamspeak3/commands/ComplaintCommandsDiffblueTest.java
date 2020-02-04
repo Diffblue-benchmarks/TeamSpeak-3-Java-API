@@ -6,6 +6,19 @@ import org.junit.Test;
 
 public class ComplaintCommandsDiffblueTest {
   @Test
+  public void complainListTest2() {
+    // Arrange and Act
+    Command actualComplainListResult = ComplaintCommands.complainList(0);
+
+    // Assert
+    String actualName = actualComplainListResult.getName();
+    String actualToStringResult = actualComplainListResult.toString();
+    assertEquals("complainlist", actualName);
+    assertEquals("complainlist", actualToStringResult);
+    assertFalse(actualComplainListResult.getFuture().isCancelled());
+  }
+
+  @Test
   public void complainListTest() {
     // Arrange and Act
     Command actualComplainListResult = ComplaintCommands.complainList(123);

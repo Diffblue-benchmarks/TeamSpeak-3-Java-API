@@ -2,9 +2,14 @@ package com.github.theholywaffle.teamspeak3.commands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class MessageCommandsDiffblueTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test
   public void messageUpdateFlagTest() {
     // Arrange and Act
@@ -45,15 +50,22 @@ public class MessageCommandsDiffblueTest {
   }
 
   @Test
+  public void messageAddTest2() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    MessageCommands.messageAdd("", "cluid", "message");
+  }
+
+  @Test
   public void messageAddTest() {
     // Arrange and Act
-    Command actualMessageAddResult = MessageCommands.messageAdd("123", "foo", "message");
+    Command actualMessageAddResult = MessageCommands.messageAdd("123", "cluid", "message");
 
     // Assert
     String actualName = actualMessageAddResult.getName();
     String actualToStringResult = actualMessageAddResult.toString();
     assertEquals("messageadd", actualName);
-    assertEquals("messageadd cluid=123 subject=foo message=message", actualToStringResult);
+    assertEquals("messageadd cluid=123 subject=cluid message=message", actualToStringResult);
     assertFalse(actualMessageAddResult.getFuture().isCancelled());
   }
 

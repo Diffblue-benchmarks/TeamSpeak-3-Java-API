@@ -86,13 +86,13 @@ public class ChannelCommandsDiffblueTest {
   @Test
   public void channelFindTest() {
     // Arrange and Act
-    Command actualChannelFindResult = ChannelCommands.channelFind("foo");
+    Command actualChannelFindResult = ChannelCommands.channelFind("channel_name");
 
     // Assert
     String actualName = actualChannelFindResult.getName();
     String actualToStringResult = actualChannelFindResult.toString();
     assertEquals("channelfind", actualName);
-    assertEquals("channelfind pattern=foo", actualToStringResult);
+    assertEquals("channelfind pattern=channel_name", actualToStringResult);
     assertFalse(actualChannelFindResult.getFuture().isCancelled());
   }
 }

@@ -2,9 +2,14 @@ package com.github.theholywaffle.teamspeak3.commands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class VirtualServerCommandsDiffblueTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test
   public void serverListTest() {
     // Arrange and Act
@@ -19,7 +24,7 @@ public class VirtualServerCommandsDiffblueTest {
   }
 
   @Test
-  public void serverCreateTest() {
+  public void serverCreateTest2() {
     // Arrange and Act
     Command actualServerCreateResult = VirtualServerCommands.serverCreate("name", null);
 
@@ -32,15 +37,29 @@ public class VirtualServerCommandsDiffblueTest {
   }
 
   @Test
+  public void serverCreateTest() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    VirtualServerCommands.serverCreate("", null);
+  }
+
+  @Test
+  public void serverSnapshotDeployTest2() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    VirtualServerCommands.serverSnapshotDeploy("");
+  }
+
+  @Test
   public void serverSnapshotDeployTest() {
     // Arrange and Act
-    Command actualServerSnapshotDeployResult = VirtualServerCommands.serverSnapshotDeploy("foo");
+    Command actualServerSnapshotDeployResult = VirtualServerCommands.serverSnapshotDeploy("all");
 
     // Assert
     String actualName = actualServerSnapshotDeployResult.getName();
     String actualToStringResult = actualServerSnapshotDeployResult.toString();
     assertEquals("serversnapshotdeploy", actualName);
-    assertEquals("serversnapshotdeploy foo", actualToStringResult);
+    assertEquals("serversnapshotdeploy all", actualToStringResult);
     assertFalse(actualServerSnapshotDeployResult.getFuture().isCancelled());
   }
 

@@ -36,7 +36,7 @@ public class TS3ConfigDiffblueTest {
     (new TS3Config()).setFloodRate(null);
   }
   @Test
-  public void setQueryPortTest() {
+  public void setQueryPortTest2() {
     // Arrange
     TS3Config ts3Config = new TS3Config();
 
@@ -46,6 +46,12 @@ public class TS3ConfigDiffblueTest {
     // Assert
     assertSame(ts3Config, actualSetQueryPortResult);
     assertEquals(8080, actualSetQueryPortResult.getQueryPort());
+  }
+  @Test
+  public void setQueryPortTest() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    (new TS3Config()).setQueryPort(0);
   }
   @Test
   public void getHostTest() {
@@ -121,7 +127,7 @@ public class TS3ConfigDiffblueTest {
     assertNull((new TS3Config()).getConnectionHandler());
   }
   @Test
-  public void setCommandTimeoutTest() {
+  public void setCommandTimeoutTest2() {
     // Arrange
     TS3Config ts3Config = new TS3Config();
 
@@ -131,6 +137,12 @@ public class TS3ConfigDiffblueTest {
     // Assert
     assertSame(ts3Config, actualSetCommandTimeoutResult);
     assertEquals(10, actualSetCommandTimeoutResult.getCommandTimeout());
+  }
+  @Test
+  public void setCommandTimeoutTest() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    (new TS3Config()).setCommandTimeout(0);
   }
   @Test
   public void setReconnectStrategyTest() {

@@ -3,9 +3,13 @@ package com.github.theholywaffle.teamspeak3.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import com.github.theholywaffle.teamspeak3.api.PrivilegeKeyType;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class PrivilegeKeyCommandsDiffblueTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
   @Test
   public void privilegeKeyAddTest() {
     // Arrange and Act
@@ -20,7 +24,12 @@ public class PrivilegeKeyCommandsDiffblueTest {
         actualToStringResult);
     assertFalse(actualPrivilegeKeyAddResult.getFuture().isCancelled());
   }
-
+  @Test
+  public void privilegeKeyUseTest2() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    PrivilegeKeyCommands.privilegeKeyUse("");
+  }
   @Test
   public void privilegeKeyUseTest() {
     // Arrange and Act
@@ -33,7 +42,6 @@ public class PrivilegeKeyCommandsDiffblueTest {
     assertEquals("privilegekeyuse token=ABC123", actualToStringResult);
     assertFalse(actualPrivilegeKeyUseResult.getFuture().isCancelled());
   }
-
   @Test
   public void privilegeKeyListTest() {
     // Arrange and Act
@@ -46,9 +54,8 @@ public class PrivilegeKeyCommandsDiffblueTest {
     assertEquals("privilegekeylist", actualToStringResult);
     assertFalse(actualPrivilegeKeyListResult.getFuture().isCancelled());
   }
-
   @Test
-  public void privilegeKeyDeleteTest() {
+  public void privilegeKeyDeleteTest2() {
     // Arrange and Act
     Command actualPrivilegeKeyDeleteResult = PrivilegeKeyCommands.privilegeKeyDelete("ABC123");
 
@@ -58,6 +65,12 @@ public class PrivilegeKeyCommandsDiffblueTest {
     assertEquals("privilegekeydelete", actualName);
     assertEquals("privilegekeydelete token=ABC123", actualToStringResult);
     assertFalse(actualPrivilegeKeyDeleteResult.getFuture().isCancelled());
+  }
+  @Test
+  public void privilegeKeyDeleteTest() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    PrivilegeKeyCommands.privilegeKeyDelete("");
   }
 }
 

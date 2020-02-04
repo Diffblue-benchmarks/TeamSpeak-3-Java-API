@@ -3,9 +3,14 @@ package com.github.theholywaffle.teamspeak3.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import com.github.theholywaffle.teamspeak3.api.ServerGroupType;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class PermissionCommandsDiffblueTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test
   public void channelGroupPermListTest() {
     // Arrange and Act
@@ -56,6 +61,19 @@ public class PermissionCommandsDiffblueTest {
     assertEquals("channelclientaddperm", actualName);
     assertEquals("channelclientaddperm cid=123 cldbid=123 permsid=name" + " permvalue=42", actualToStringResult);
     assertFalse(actualChannelClientAddPermResult.getFuture().isCancelled());
+  }
+
+  @Test
+  public void permGetTest() {
+    // Arrange and Act
+    Command actualPermGetResult = PermissionCommands.permGet("cgid", "cgid", "cgid");
+
+    // Assert
+    String actualName = actualPermGetResult.getName();
+    String actualToStringResult = actualPermGetResult.toString();
+    assertEquals("permget", actualName);
+    assertEquals("permget permsid=cgid|permsid=cgid|permsid=cgid", actualToStringResult);
+    assertFalse(actualPermGetResult.getFuture().isCancelled());
   }
 
   @Test
@@ -150,7 +168,7 @@ public class PermissionCommandsDiffblueTest {
   }
 
   @Test
-  public void permIdGetByNameTest() {
+  public void permIdGetByNameTest2() {
     // Arrange and Act
     Command actualPermIdGetByNameResult = PermissionCommands.permIdGetByName("name");
 
@@ -173,6 +191,19 @@ public class PermissionCommandsDiffblueTest {
     assertEquals("servergroupdelperm", actualName);
     assertEquals("servergroupdelperm sgid=123 permsid=name", actualToStringResult);
     assertFalse(actualServerGroupDelPermResult.getFuture().isCancelled());
+  }
+
+  @Test
+  public void permIdGetByNameTest() {
+    // Arrange and Act
+    Command actualPermIdGetByNameResult = PermissionCommands.permIdGetByName("cgid", "cgid", "cgid");
+
+    // Assert
+    String actualName = actualPermIdGetByNameResult.getName();
+    String actualToStringResult = actualPermIdGetByNameResult.toString();
+    assertEquals("permidgetbyname", actualName);
+    assertEquals("permidgetbyname permsid=cgid|permsid=cgid" + "|permsid=cgid", actualToStringResult);
+    assertFalse(actualPermIdGetByNameResult.getFuture().isCancelled());
   }
 
   @Test
@@ -281,6 +312,13 @@ public class PermissionCommandsDiffblueTest {
     assertEquals("servergroupautoaddperm sgtype=10 permsid=name" + " permvalue=42 permnegated=1 permskip=1",
         actualToStringResult);
     assertFalse(actualServerGroupAutoAddPermResult.getFuture().isCancelled());
+  }
+
+  @Test
+  public void permFindTest2() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    PermissionCommands.permFind("");
   }
 
   @Test

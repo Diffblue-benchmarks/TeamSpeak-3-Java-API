@@ -7,7 +7,7 @@ public class OptionParamDiffblueTest {
   @Test
   public void constructorTest() {
     // Arrange, Act and Assert
-    assertEquals("-foo", (new OptionParam("foo")).toString());
+    assertEquals("-aaaaa", (new OptionParam("aaaaa")).toString());
   }
 }
 
