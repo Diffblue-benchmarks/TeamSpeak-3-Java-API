@@ -7,13 +7,13 @@ public class SnapshotDiffblueTest {
   @Test
   public void getTest() {
     // Arrange, Act and Assert
-    assertEquals("aaaaa", (new Snapshot("aaaaa")).get());
+    assertEquals("foo", (new Snapshot("foo")).get());
   }
 
   @Test
   public void constructorTest() {
     // Arrange, Act and Assert
-    assertEquals("aaaaa", (new Snapshot("aaaaa")).get());
+    assertEquals("foo", (new Snapshot("foo")).get());
   }
 }
 

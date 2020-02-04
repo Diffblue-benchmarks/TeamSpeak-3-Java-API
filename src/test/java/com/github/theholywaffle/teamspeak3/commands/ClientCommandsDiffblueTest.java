@@ -2,8 +2,6 @@ package com.github.theholywaffle.teamspeak3.commands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import com.github.theholywaffle.teamspeak3.api.ReasonIdentifier;
-import java.util.Arrays;
 import org.junit.Test;
 
 public class ClientCommandsDiffblueTest {
@@ -74,7 +72,7 @@ public class ClientCommandsDiffblueTest {
   }
 
   @Test
-  public void clientMoveTest2() {
+  public void clientMoveTest() {
     // Arrange and Act
     Command actualClientMoveResult = ClientCommands.clientMove(123, 123, "Password123");
 
@@ -113,43 +111,6 @@ public class ClientCommandsDiffblueTest {
   }
 
   @Test
-  public void clientMoveTest() {
-    // Arrange
-    int[] intArray = new int[8];
-    Arrays.fill(intArray, 1);
-
-    // Act
-    Command actualClientMoveResult = ClientCommands.clientMove(intArray, 123, "Password123");
-
-    // Assert
-    String actualName = actualClientMoveResult.getName();
-    String actualToStringResult = actualClientMoveResult.toString();
-    assertEquals("clientmove", actualName);
-    assertEquals("clientmove cid=123 cpw=Password123 clid=1|clid=1" + "|clid=1|clid=1|clid=1|clid=1|clid=1|clid=1",
-        actualToStringResult);
-    assertFalse(actualClientMoveResult.getFuture().isCancelled());
-  }
-
-  @Test
-  public void clientKickTest() {
-    // Arrange
-    int[] intArray = new int[8];
-    Arrays.fill(intArray, 1);
-
-    // Act
-    Command actualClientKickResult = ClientCommands.clientKick(ReasonIdentifier.REASON_KICK_CHANNEL, "because",
-        intArray);
-
-    // Assert
-    String actualName = actualClientKickResult.getName();
-    String actualToStringResult = actualClientKickResult.toString();
-    assertEquals("clientkick", actualName);
-    assertEquals("clientkick reasonid=4 reasonmsg=because clid=1|clid" + "=1|clid=1|clid=1|clid=1|clid=1|clid=1|clid=1",
-        actualToStringResult);
-    assertFalse(actualClientKickResult.getFuture().isCancelled());
-  }
-
-  @Test
   public void clientEditTest() {
     // Arrange and Act
     Command actualClientEditResult = ClientCommands.clientEdit(123, null);
@@ -165,13 +126,13 @@ public class ClientCommandsDiffblueTest {
   @Test
   public void clientFindTest() {
     // Arrange and Act
-    Command actualClientFindResult = ClientCommands.clientFind("away");
+    Command actualClientFindResult = ClientCommands.clientFind("foo");
 
     // Assert
     String actualName = actualClientFindResult.getName();
     String actualToStringResult = actualClientFindResult.toString();
     assertEquals("clientfind", actualName);
-    assertEquals("clientfind pattern=away", actualToStringResult);
+    assertEquals("clientfind pattern=foo", actualToStringResult);
     assertFalse(actualClientFindResult.getFuture().isCancelled());
   }
 

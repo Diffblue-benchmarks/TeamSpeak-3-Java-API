@@ -142,7 +142,7 @@ public class CommandFutureDiffblueTest {
     CommandFuture<Object> commandFuture = new CommandFuture<Object>();
 
     // Act and Assert
-    assertTrue(commandFuture.fail(new TS3Exception("aaaaa")));
+    assertTrue(commandFuture.fail(new TS3Exception("foo")));
     assertTrue(commandFuture.isDone());
   }
 

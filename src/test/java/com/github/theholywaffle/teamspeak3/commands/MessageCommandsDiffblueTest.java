@@ -47,13 +47,13 @@ public class MessageCommandsDiffblueTest {
   @Test
   public void messageAddTest() {
     // Arrange and Act
-    Command actualMessageAddResult = MessageCommands.messageAdd("123", "cluid", "message");
+    Command actualMessageAddResult = MessageCommands.messageAdd("123", "foo", "message");
 
     // Assert
     String actualName = actualMessageAddResult.getName();
     String actualToStringResult = actualMessageAddResult.toString();
     assertEquals("messageadd", actualName);
-    assertEquals("messageadd cluid=123 subject=cluid message=message", actualToStringResult);
+    assertEquals("messageadd cluid=123 subject=foo message=message", actualToStringResult);
     assertFalse(actualMessageAddResult.getFuture().isCancelled());
   }
 

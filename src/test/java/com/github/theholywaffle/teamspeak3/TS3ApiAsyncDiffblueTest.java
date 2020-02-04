@@ -3,7 +3,6 @@ package com.github.theholywaffle.teamspeak3;
 import static org.junit.Assert.assertFalse;
 import com.github.theholywaffle.teamspeak3.api.ClientProperty;
 import com.github.theholywaffle.teamspeak3.api.ServerInstanceProperty;
-import java.util.Arrays;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -11,18 +10,6 @@ import org.junit.rules.ExpectedException;
 public class TS3ApiAsyncDiffblueTest {
   @Rule
   public ExpectedException thrown = ExpectedException.none();
-  @Test
-  public void getFileInfosTest() {
-    // Arrange
-    TS3ApiAsync ts3ApiAsync = new TS3ApiAsync(new TS3Query());
-    int[] intArray = new int[8];
-    Arrays.fill(intArray, 1);
-
-    // Act and Assert
-    thrown.expect(IllegalArgumentException.class);
-    ts3ApiAsync.getFileInfos(new String[]{"aaaaa", "aaaaa", "aaaaa"}, intArray,
-        new String[]{"aaaaa", "aaaaa", "aaaaa"});
-  }
   @Test
   public void addTS3ListenersTest() {
     // Arrange, Act and Assert
