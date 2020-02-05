@@ -7,7 +7,7 @@ public class RawParamDiffblueTest {
   @Test
   public void constructorTest() {
     // Arrange, Act and Assert
-    assertEquals("aaaaa", (new RawParam("aaaaa")).toString());
+    assertEquals("foo", (new RawParam("foo")).toString());
   }
 }
 

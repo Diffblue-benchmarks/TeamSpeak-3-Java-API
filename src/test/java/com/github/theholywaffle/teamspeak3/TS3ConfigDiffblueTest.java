@@ -36,6 +36,12 @@ public class TS3ConfigDiffblueTest {
     (new TS3Config()).setFloodRate(null);
   }
   @Test
+  public void setQueryPortTest3() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    (new TS3Config()).setQueryPort(2147483647);
+  }
+  @Test
   public void setQueryPortTest2() {
     // Arrange
     TS3Config ts3Config = new TS3Config();
@@ -51,7 +57,7 @@ public class TS3ConfigDiffblueTest {
   public void setQueryPortTest() {
     // Arrange, Act and Assert
     thrown.expect(IllegalArgumentException.class);
-    (new TS3Config()).setQueryPort(0);
+    (new TS3Config()).setQueryPort(-1);
   }
   @Test
   public void getHostTest() {
@@ -142,7 +148,7 @@ public class TS3ConfigDiffblueTest {
   public void setCommandTimeoutTest() {
     // Arrange, Act and Assert
     thrown.expect(IllegalArgumentException.class);
-    (new TS3Config()).setCommandTimeout(0);
+    (new TS3Config()).setCommandTimeout(-1);
   }
   @Test
   public void setReconnectStrategyTest() {

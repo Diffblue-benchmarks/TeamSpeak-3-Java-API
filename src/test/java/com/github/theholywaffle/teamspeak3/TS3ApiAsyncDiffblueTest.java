@@ -20,8 +20,7 @@ public class TS3ApiAsyncDiffblueTest {
 
     // Act and Assert
     thrown.expect(IllegalArgumentException.class);
-    ts3ApiAsync.getFileInfos(new String[]{"aaaaa", "aaaaa", "aaaaa"}, intArray,
-        new String[]{"aaaaa", "aaaaa", "aaaaa"});
+    ts3ApiAsync.getFileInfos(new String[]{"foo", "foo", "foo"}, intArray, new String[]{"foo", "foo", "foo"});
   }
   @Test
   public void addTS3ListenersTest() {

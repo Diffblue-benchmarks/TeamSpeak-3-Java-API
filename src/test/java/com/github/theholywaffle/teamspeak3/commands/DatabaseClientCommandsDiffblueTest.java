@@ -46,13 +46,13 @@ public class DatabaseClientCommandsDiffblueTest {
   @Test
   public void clientDBFindTest() {
     // Arrange and Act
-    Command actualClientDBFindResult = DatabaseClientCommands.clientDBFind("cldbid", true);
+    Command actualClientDBFindResult = DatabaseClientCommands.clientDBFind("foo", true);
 
     // Assert
     String actualName = actualClientDBFindResult.getName();
     String actualToStringResult = actualClientDBFindResult.toString();
     assertEquals("clientdbfind", actualName);
-    assertEquals("clientdbfind pattern=cldbid -uid", actualToStringResult);
+    assertEquals("clientdbfind pattern=foo -uid", actualToStringResult);
     assertFalse(actualClientDBFindResult.getFuture().isCancelled());
   }
 

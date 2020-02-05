@@ -8,7 +8,7 @@ public class ComplaintCommandsDiffblueTest {
   @Test
   public void complainListTest2() {
     // Arrange and Act
-    Command actualComplainListResult = ComplaintCommands.complainList(0);
+    Command actualComplainListResult = ComplaintCommands.complainList(-1);
 
     // Assert
     String actualName = actualComplainListResult.getName();

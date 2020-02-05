@@ -13,7 +13,7 @@ public class ChannelGroupCommandsDiffblueTest {
   @Test
   public void channelGroupClientListTest4() {
     // Arrange and Act
-    Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(0, 123, 123);
+    Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(-1, 123, 123);
 
     // Assert
     String actualName = actualChannelGroupClientListResult.getName();
@@ -25,7 +25,7 @@ public class ChannelGroupCommandsDiffblueTest {
   @Test
   public void channelGroupClientListTest3() {
     // Arrange and Act
-    Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(123, 123, 0);
+    Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(123, 123, -1);
 
     // Assert
     String actualName = actualChannelGroupClientListResult.getName();
@@ -49,7 +49,7 @@ public class ChannelGroupCommandsDiffblueTest {
   @Test
   public void channelGroupClientListTest() {
     // Arrange and Act
-    Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(123, 0, 123);
+    Command actualChannelGroupClientListResult = ChannelGroupCommands.channelGroupClientList(123, -1, 123);
 
     // Assert
     String actualName = actualChannelGroupClientListResult.getName();

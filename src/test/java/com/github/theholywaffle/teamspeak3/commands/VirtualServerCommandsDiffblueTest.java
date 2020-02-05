@@ -53,13 +53,13 @@ public class VirtualServerCommandsDiffblueTest {
   @Test
   public void serverSnapshotDeployTest() {
     // Arrange and Act
-    Command actualServerSnapshotDeployResult = VirtualServerCommands.serverSnapshotDeploy("all");
+    Command actualServerSnapshotDeployResult = VirtualServerCommands.serverSnapshotDeploy("foo");
 
     // Assert
     String actualName = actualServerSnapshotDeployResult.getName();
     String actualToStringResult = actualServerSnapshotDeployResult.toString();
     assertEquals("serversnapshotdeploy", actualName);
-    assertEquals("serversnapshotdeploy all", actualToStringResult);
+    assertEquals("serversnapshotdeploy foo", actualToStringResult);
     assertFalse(actualServerSnapshotDeployResult.getFuture().isCancelled());
   }
 

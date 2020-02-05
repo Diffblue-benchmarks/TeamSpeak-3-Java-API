@@ -184,13 +184,13 @@ public class ClientCommandsDiffblueTest {
   @Test
   public void clientFindTest2() {
     // Arrange and Act
-    Command actualClientFindResult = ClientCommands.clientFind("away");
+    Command actualClientFindResult = ClientCommands.clientFind("foo");
 
     // Assert
     String actualName = actualClientFindResult.getName();
     String actualToStringResult = actualClientFindResult.toString();
     assertEquals("clientfind", actualName);
-    assertEquals("clientfind pattern=away", actualToStringResult);
+    assertEquals("clientfind pattern=foo", actualToStringResult);
     assertFalse(actualClientFindResult.getFuture().isCancelled());
   }
 

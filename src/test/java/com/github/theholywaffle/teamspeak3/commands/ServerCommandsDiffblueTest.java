@@ -2,9 +2,14 @@ package com.github.theholywaffle.teamspeak3.commands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class ServerCommandsDiffblueTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test
   public void serverProcessStopTest() {
     // Arrange and Act
@@ -84,7 +89,7 @@ public class ServerCommandsDiffblueTest {
   }
 
   @Test
-  public void logViewTest2() {
+  public void logViewTest3() {
     // Arrange and Act
     Command actualLogViewResult = ServerCommands.logView(2, true);
 
@@ -97,9 +102,9 @@ public class ServerCommandsDiffblueTest {
   }
 
   @Test
-  public void logViewTest() {
+  public void logViewTest2() {
     // Arrange and Act
-    Command actualLogViewResult = ServerCommands.logView(0, true);
+    Command actualLogViewResult = ServerCommands.logView(-1, true);
 
     // Assert
     String actualName = actualLogViewResult.getName();
@@ -107,6 +112,13 @@ public class ServerCommandsDiffblueTest {
     assertEquals("logview", actualName);
     assertEquals("logview instance=1", actualToStringResult);
     assertFalse(actualLogViewResult.getFuture().isCancelled());
+  }
+
+  @Test
+  public void logViewTest() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    ServerCommands.logView(2147483647, true);
   }
 
   @Test

@@ -66,13 +66,13 @@ public class PermissionCommandsDiffblueTest {
   @Test
   public void permGetTest() {
     // Arrange and Act
-    Command actualPermGetResult = PermissionCommands.permGet("cgid", "cgid", "cgid");
+    Command actualPermGetResult = PermissionCommands.permGet("foo", "foo", "foo");
 
     // Assert
     String actualName = actualPermGetResult.getName();
     String actualToStringResult = actualPermGetResult.toString();
     assertEquals("permget", actualName);
-    assertEquals("permget permsid=cgid|permsid=cgid|permsid=cgid", actualToStringResult);
+    assertEquals("permget permsid=foo|permsid=foo|permsid=foo", actualToStringResult);
     assertFalse(actualPermGetResult.getFuture().isCancelled());
   }
 
@@ -196,13 +196,13 @@ public class PermissionCommandsDiffblueTest {
   @Test
   public void permIdGetByNameTest() {
     // Arrange and Act
-    Command actualPermIdGetByNameResult = PermissionCommands.permIdGetByName("cgid", "cgid", "cgid");
+    Command actualPermIdGetByNameResult = PermissionCommands.permIdGetByName("foo", "foo", "foo");
 
     // Assert
     String actualName = actualPermIdGetByNameResult.getName();
     String actualToStringResult = actualPermIdGetByNameResult.toString();
     assertEquals("permidgetbyname", actualName);
-    assertEquals("permidgetbyname permsid=cgid|permsid=cgid" + "|permsid=cgid", actualToStringResult);
+    assertEquals("permidgetbyname permsid=foo|permsid=foo" + "|permsid=foo", actualToStringResult);
     assertFalse(actualPermIdGetByNameResult.getFuture().isCancelled());
   }
 
